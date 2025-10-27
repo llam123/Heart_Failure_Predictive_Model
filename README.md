@@ -1,14 +1,14 @@
-# Predictive Modeling for Early Identification of Hip and Knee Replacement (HKR) Candidates
+# Predictive Modeling for Early Identification of Cardiovascular Heart Failure (CHF) Candidates
 
 1. Objective
    
-Develop a supervised machine learning model to predict the likelihood of hip or knee replacement (HKR) surgery up to three months before it occurs, enabling proactive care management and early non-surgical interventions.
+Develop a supervised machine learning model to predict the likelihood of CHF diagnosis up to three months before it occurs, enabling proactive care management and early non-surgical interventions.
 ________________________________________
 2. Background
 
-Hip and knee replacement surgeries represent a major cost driver in healthcare. Early identification of members at high risk for HKR enables timely intervention through physical therapy, medication, and lifestyle management — all of which have been shown to reduce surgical necessity and improve patient outcomes.
+Heart stent surgeries represent a major cost driver in healthcare. Early identification of members at high risk for heart stent surgeries enables timely intervention through medication, and lifestyle management — all of which have been shown to reduce surgical necessity and improve patient outcomes.
 
-However, current claims data show that only 50% of patients receive physical therapy within 12 months prior to surgery, indicating a gap in preventive management. Many patients remain untreated until their condition deteriorates, resulting in costly and avoidable surgical interventions.
+However, current claims data show that only 50% of patients has CHF related medication within 12 months prior to surgery, indicating a gap in preventive management. Many patients remain untreated until their condition deteriorates, resulting in costly and avoidable surgical interventions.
 
 By using predictive analytics, we aim to flag high-risk members for early outreach by care managers and physicians, facilitating conservative management and potential cost savings.
 ________________________________________
@@ -22,7 +22,7 @@ Feature categories include:
 
 	Demographics: Age, gender
 	Financial metrics: Total medical expense, revenue, medical expense ratio
-	Clinical features: Chronic conditions, ICD-10 diagnosis codes, DRG procedure codes, medication history, ER utilization, osteoporosis/osteoarthritis diagnosis
+	Clinical features: Chronic conditions, ICD-10 diagnosis codes, DRG procedure codes, medication history, ER utilization
   
 A total of 3,571 engineered features were extracted.
 
@@ -73,7 +73,7 @@ In contrast, other models do not perform as well (xgboost: AUPRC = 0.76, PPV = 0
 ________________________________________
 5. Feature Importance and Model Interpretability
 
-Key predictive features include indicators of hypertension, hyperlipidemia, obesity, and metabolic disorders—conditions correlated with osteoarthritis progression and the need for HKR.
+Key predictive features include indicators of hypertension, hyperlipidemia, obesity, and metabolic disorders—conditions.
 
 Model interpretability was achieved using SHAP (SHapley Additive exPlanations) to provide member-level insights, enabling clinicians to understand which features drive individual predictions.
 ________________________________________
@@ -81,13 +81,13 @@ ________________________________________
 6. Results and Clinical Insights
 	Best Model: CatBoost. Average Precision (AUPRC): 0.88. PPV: 0.72
 
-	High-risk profile: Members presenting with obesity, frailty, chronic back pain, hypertension, hyperlipidemia, and osteoarthritis were significantly more likely to undergo HKR.
+	High-risk profile: Members presenting with obesity, frailty, chronic back pain, hypertension, and hyperlipidemia were significantly more likely to undergo heart stent surgery.
 
 	Predictive accuracy:
 
       Between Jan–May 2025, the model correctly predicted 1,179 members who underwent surgery.
    
-	    704 were identified as high risk, of which 357 (30%) had no prior physical therapy.
+	    704 were identified as high risk, of which 357 (30%) had no record of CHF medication.
    
 	    Early intervention for these 357 members could have potentially avoided surgery, yielding an estimated cost savings of $2.14M over 5 months.
    
@@ -95,15 +95,11 @@ ________________________________________
 ________________________________________
 7. Reproducibility and Notebooks
    
-Notebooks
-
-process_data_nlp_cf.py: for	data preprocessing (NA imputation, feature selection, data cleaning)
-
 text_ngram.py: NLP pipeline functions (tokenization, TF-IDF generation)
 
-transform_text_features_numericNoScale.py: Convert NLP features into structured tabular form
-
-train_chf_90daysprior_numNoScale_withShap.ipynb: Model training and SHAP-based explainability
+chf_predictive_model.ipynb: 
+	- Convert NLP features into structured tabular form
+	- Model training and SHAP-based explainability
 ________________________________________
 8. Conclusion
    
