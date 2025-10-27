@@ -33,8 +33,8 @@ For ICD-10 codes, two derived feature sets were created:
   
 The target variable is binary:
 
-	1 = Member underwent HKR surgery
-	0 = Member did not undergo HKR surgery
+	1 = Member underwent heart stent surgery
+	0 = Member did not undergo heart stent surgery
   
 The dataset is highly imbalanced, with a positive-to-negative ratio of approximately 0.15.
 ________________________________________
